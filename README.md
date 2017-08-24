@@ -1,2 +1,2 @@
 # addmission-to-the-exam
-# https://travis-ci.org/livitalek/addmission-to-the-exam.svg?branch=master
+## [![Build Status](https://travis-ci.org/livitalek/addmission-to-the-exam.svg?branch=master)](https://travis-ci.org/livitalek/addmission-to-the-exam)
