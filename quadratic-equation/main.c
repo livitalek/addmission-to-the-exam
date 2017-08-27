@@ -7,7 +7,10 @@ float solutionX2(float a, float b, float disc);
 int main(int argc, char **argv) {
 	float a, b, c, disc, x1, x2;
 	printf("Quadratic equation: A * X^2 + B * X + C = 0\nEnter A, B, C:");
-	scanf("%f %f %f", &a, &b, &c);
+	a = 1;
+	b = 2;
+	c = -3;
+//	scanf("%f %f %f", &a, &b, &c);
 	if (a == 0 ) {
 	printf("A = 0. Not quadratic equation!!!\n");
 	} else {
