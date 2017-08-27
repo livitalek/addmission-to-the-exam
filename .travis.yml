@@ -1,5 +1,4 @@
 language: c
 compiler: gcc
 
-script: gcc -Wall -Werror hello-world/main.c -o hello-world/hello-world && hello-world/hello-world
-
+script: make hwsrc && bin/hello-world && make qesrc && bin/quad-eq && 1 2 -3
