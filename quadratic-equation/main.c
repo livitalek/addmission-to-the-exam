@@ -1,16 +1,15 @@
 #include <stdio.h>
-#include <math.h>
 
 float discriminant(float a, float b, float c);
 float solutionX1(float a, float b, float disc);
 float solutionX2(float a, float b, float disc);
 
-int main(int argc, char argv) {
-	float a, b, c, x, disc, x1, x2;
+int main(int argc, char **argv) {
+	float a, b, c, disc, x1, x2;
 	printf("Quadratic equation: A * X^2 + B * X + C = 0\nEnter A, B, C:");
 	scanf("%f %f %f", &a, &b, &c);
 	if (a == 0 ) {
-	printf("A = %.2f. Not quadratic equation!!!");
+	printf("A = 0. Not quadratic equation!!!\n");
 	} else {
 		printf("%.2f * X^2 + %.2f * X + %.2f = 0\n", a, b, c);
 		disc = discriminant(a, b, c);
@@ -29,18 +28,18 @@ int main(int argc, char argv) {
 
 float discriminant(float a, float b, float c) {
 	int disc;
-	disc = pow(b, 2) - 4 * a * c;
+	disc = b * b - 4 * a * c;
 	return disc;
 }
 
 float solutionX1(float a, float b, float disc) {
 	int x1;
-	x1 = (b * (-1) - sqrtf(disc)) / (2 * a);
+	x1 = (b * (-1) - disc / (disc * disc)) / (2 * a);
 	return x1;
 }
 
 float solutionX2(float a, float b, float disc) {
 	int x2;
-	x2 = (b * (-2) + sqrtf(disc)) / (2 * a);
+	x2 = (b * (-2) + disc / (disc * disc)) / (2 * a);
 	return x2;
 }
