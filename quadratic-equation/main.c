@@ -1,8 +1,5 @@
 #include <stdio.h>
-
-float discriminant(float a, float b, float c);
-float solutionX1(float a, float b, float disc);
-float solutionX2(float a, float b, float disc);
+#include "function.h"
 
 int main(int argc, char **argv) {
 	float a, b, c, disc, x1, x2;
@@ -27,22 +24,4 @@ int main(int argc, char **argv) {
 		}
 	}
 	return 0;
-}
-
-float discriminant(float a, float b, float c) {
-	int disc;
-	disc = b * b - 4 * a * c;
-	return disc;
-}
-
-float solutionX1(float a, float b, float disc) {
-	int x1;
-	x1 = (b * (-1) - disc / (disc * disc)) / (2 * a);
-	return x1;
-}
-
-float solutionX2(float a, float b, float disc) {
-	int x2;
-	x2 = (b * (-2) + disc / (disc * disc)) / (2 * a);
-	return x2;
 }

@@ -26,11 +26,11 @@ build-hw/ $(OBJ_DIR_HW) bin/:
 	mkdir $@
 
 $(EXE_HW): $(OBJ_HW)
-	$(CF) $^ -o $@
+	$(CF) $^ -o $@ 
 
 $(OBJ_DIR_HW)/%.o: $(SRC_DIR_HW)/%.c
-	$(CF) $^ -c -o $@
-	$(CF) $^ -MM > $(OBJ_DIR_HW)/$*.d
+	$(CF) $^ -c -o $@ 
+	$(CF) $^ -MM > $(OBJ_DIR_HW)/$*.d 
 
 qesrc: build-qe/ $(OBJ_DIR_QE) bin/ $(EXE_QE) $(SRC_QE)
 
@@ -38,11 +38,11 @@ build-qe/ $(OBJ_DIR_QE) bin/:
 	mkdir $@
 
 $(EXE_QE): $(OBJ_QE)
-	$(CF) $^ -o $@
+	$(CF) $^ -o $@ -lm
 
-$(OBJ_DIR_QE)/%.o: $(SRC_DIR_QE)/%.c
-	$(CF) $^ -c -o $@
-	$(CF) $^ -MM > $(OBJ_DIR_QE)/$8.d
+$(OBJ_DIR_QE)/%.o: $(SRC_DIR_QE)/%.c 
+	$(CF) $^ -c -o $@  -lm
+	$(CF) $^ -MM > $(OBJ_DIR_QE)/$*.d -lm
 
 clean:
 	rm -rf build-hw build-qe bin
