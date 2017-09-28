@@ -29,7 +29,7 @@ TEST_DEP_QE = $(TEST_OBJ_QE:.o=.d)
 -include $(DEP_QE)
 -include $(TEST_DEP_QE)
 
-.PHONY: hwsrc qesrc clean
+.PHONY: hwsrc qesrc qetest clean
 
 hwsrc: build-hw/ $(OBJ_DIR_HW) bin/ $(EXE_HW) $(SRC_HW)
 
@@ -51,18 +51,20 @@ build-qe/ $(OBJ_DIR_QE) $(TEST_OBJ_DIR_QE) bin/:
 $(EXE_QE): $(OBJ_QE)
 	$(CF) $^ -o $@ -lm
 
-$(OBJ_DIR_QE)/%.o: $(SRC_DIR_QE)/%.c 
-	$(CF) $^ -c -o $@  -lm
+$(OBJ_DIR_QE)/%.o: $(SRC_DIR_QE)/%.c
+	$(CF) $^ -c -o $@ -lm 
 	$(CF) $^ -MM > $(OBJ_DIR_QE)/$*.d -lm
+
+
 
 qetest: qesrc $(TEST_OBJ_DIR_QE) $(TEST_EXE_QE) $(TEST_SRC_QE)
 
-$(TEST_EXE_QE) : $(TEST_OBJ_QE) $(patsubst build/src/main.o, ,$(OBJ))
+$(TEST_EXE_QE): $(TEST_OBJ_QE) $(patsubst build-qe/src/main.o, ,$(OBJ_QE))
 	$(CF_TEST) $^ -o $@ -lm
 
 $(TEST_OBJ_DIR_QE)/%.o: $(TEST_SRC_DIR_QE)/%.c
 	$(CF_TEST) $^ -c -o $@ -lm
-	$(CF_TEST) $^ -MM > $(TEST_OBJ_DIR_QE)/$*.d
+	$(CF_TEST) $^ -MM > $(TEST_OBJ_DIR_QE)/$*.d -lm
 
 clean:
 	rm -rf build-hw build-qe bin

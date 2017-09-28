@@ -3,7 +3,8 @@
 
 int main(int argc, char **argv) {
 	float a, b, c, disc, x1, x2;
-	printf("Quadratic equation: A * X^2 + B * X + C = 0\nEnter A, B, C:");
+	printf("Quadratic equation: A * X^2 + B * X + C = 0\n");
+//	printf("Enter A, B, C:");
 	a = 1;
 	b = 2;
 	c = -3;

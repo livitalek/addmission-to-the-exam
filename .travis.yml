@@ -1,4 +1,4 @@
 language: c
 compiler: gcc
 
-script: make hwsrc && bin/hello-world && make qesrc && bin/quad-eq
+script: make hwsrc && bin/hello-world && make qesrc && bin/quad-eq && make qetest && bin/quad-eq-test
